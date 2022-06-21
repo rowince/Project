@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Student</title>
+</head>
+<body>
+    <div>
+        <h1>Check All Student Information</h1>
+        <hr>
+        <table border = '1'>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Roll</th>
+                <th>Action</th>
+            </tr>
+            {% for stud in student %}
+            <tr>
+                <td>{{stud.id}}</td>
+                <td>{{stud.name}}</td>
+                <td>{{stud.city}}</td>
+                <td>{{stud.roll}}</td>
+                <td>
+                   <button><a href="{% url 'edit' stud.id %}">Edit</a></button> 
+                   <button><a href="{% url 'delete' stud.id %}">Delete</a></button> 
+                    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        {% if messages %}
+        {% for message in messages%}
+        {{message}}
+        {% endfor %}
+        {% endif %}
+        <br>
+        <button><a href="/">BACK</a></button>
+        <hr>
+    </div>
+</body>
+</html>
